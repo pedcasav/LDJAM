@@ -4,6 +4,7 @@ const SPEED = 150
 var motion = Vector2()
 var direction = 0
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -40,4 +41,13 @@ func _physics_process(delta):
 				$Sprite.play("DerechaI")
 		
 	motion = move_and_slide(motion)
-	pass
+
+func _process(delta):
+	
+	if (Input.is_action_pressed("Escape")):
+		_backToMenu()
+	
+
+func _backToMenu():
+	
+	get_tree().change_scene("res://Menu.tscn")
