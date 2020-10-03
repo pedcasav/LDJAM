@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ExitButton.gd" type="Script" id=1]
+[ext_resource path="res://PlayButton.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_left = 0.269
+anchor_top = 0.239
+anchor_right = 0.735
+anchor_bottom = 0.776
+margin_left = 0.0668182
+margin_top = -0.0114899
+margin_right = -0.0851746
+margin_bottom = -0.139496
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.5
+margin_top = -146.0
+margin_right = 156.5
+margin_bottom = 146.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="Panel"]
+anchor_left = 0.29477
+anchor_top = 0.291628
+anchor_right = 0.73477
+anchor_bottom = 0.442628
+margin_left = -0.144005
+margin_top = 0.0405273
+margin_right = 0.135986
+margin_bottom = -0.0514679
+text = "Play"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ExitButton" type="Button" parent="Panel"]
+anchor_left = 0.290268
+anchor_top = 0.578646
+anchor_right = 0.724878
+anchor_bottom = 0.719372
+margin_left = 0.146156
+margin_top = 0.0354156
+margin_right = 0.113144
+margin_bottom = -0.0565948
+text = "Exit"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Panel/ExitButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -47.0
+margin_top = -29.0
+margin_right = 47.0
+margin_bottom = 29.0
+window_title = "¡Alert!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="Panel/PlayButton" to="Panel/PlayButton" method="_on_PlayButton_button_down"]
+[connection signal="button_up" from="Panel/ExitButton" to="Panel/ExitButton" method="_on_ExitButton_button_up"]
+[connection signal="confirmed" from="Panel/ExitButton/AcceptDialog" to="Panel/ExitButton" method="_on_AcceptDialog_confirmed"]
