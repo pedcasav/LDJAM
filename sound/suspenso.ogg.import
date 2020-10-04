@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/suspenso.ogg-78a5cb68f7c58c6dd268854115fb9a33.oggstr"
+
+[deps]
+
+source_file="res://sound/suspenso.ogg"
+dest_files=[ "res://.import/suspenso.ogg-78a5cb68f7c58c6dd268854115fb9a33.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
