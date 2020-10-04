@@ -14,9 +14,14 @@ func _ready():
 
 func SelectInrretupor():
 	rng.randomize()
-	currentInterruptor = interruptores[rng.randi_range(0,len(interruptores) - 1)]
-	
-func moveToPaht(posA, posB,distance):
+	var indice = rng.randi_range(0,len(interruptores) - 1)
+	var tmpcurrentInterruptor = interruptores[indice]
+	while(tmpcurrentInterruptor == currentInterruptor):
+		rng.randomize()
+		indice = rng.randi_range(0,len(interruptores) - 1)
+		tmpcurrentInterruptor = interruptores[indice]
+	currentInterruptor = tmpcurrentInterruptor
+func moveToPath(posA, posB,distance):
 	path = nav_2d.get_simple_path(posA,posB,false)
 	
 	if(path.size() == 0):
@@ -43,7 +48,7 @@ func _physics_process(delta : float):
 
 	var distance : = Velocidad * delta
 	if distanciaActual < Distancia:
-		moveToPaht(position,posicionPlayer,distance)
+		moveToPath(position,posicionPlayer,distance)
 	else:
-		moveToPaht(position,currentInterruptor.position,distance)
+		moveToPath(position,currentInterruptor.position,distance)
 		pass
