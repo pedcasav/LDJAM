@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var IsInterruptor = $"../isInterruptor"
 export var onInterruptor = false
 onready var tiempo = $"../Timer"
+onready var progreso = $"../BarraCansancio"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +33,6 @@ export var cansancioLimite = 40
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	motion = Vector2()
-	
 	IsInterruptor.set_text(str(onInterruptor))
 	motion.x = 0
 	motion.y = 0
@@ -53,7 +53,11 @@ func _physics_process(delta):
 	#press to space when stay on interruptor
 	if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
 		tiempo.start()
+		progreso.value = 0
+		progreso.visible = true
 	
+	if progreso.visible == true:
+		progreso.value = 100 - (tiempo.time_left *100 / 5)
 	motion = move_and_slide(motion.normalized() * SPEED)
 
 func _processDescanso():
@@ -72,4 +76,5 @@ func _on_Timer_timeout():
 			break
 	
 	currentScene.interruptoresArreglados = tmpArr
+	$"../BarraCansancio".visible = false
 	pass
