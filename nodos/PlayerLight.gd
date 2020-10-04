@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+onready var IsInterruptor = $"../isInterruptor"
+export var onInterruptor = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,6 +27,7 @@ export var cansancioLimite = 40
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	IsInterruptor.set_text(str(onInterruptor))
 	if Input.is_action_pressed("ui_right"):
 			motion.x = 1 * SPEED * cansancio / 100
 			motion.y = 0
