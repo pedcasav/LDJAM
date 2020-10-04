@@ -60,7 +60,6 @@ __meta__ = {
 }
 
 [node name="ExitButton" type="Button" parent="Panel"]
-editor/display_folded = true
 anchor_left = 0.290268
 anchor_top = 0.578646
 anchor_right = 0.724878
