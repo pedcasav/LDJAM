@@ -26,6 +26,26 @@ animations = [ {
 "name": "Abajo",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Arriba",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "Derecha",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Izquierda",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "IzquierdaI",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "DerechaI",
@@ -39,26 +59,6 @@ animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "AbajoI",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "Derecha",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "Arriba",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "Izquierda",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "IzquierdaI",
 "speed": 5.0
 } ]
 

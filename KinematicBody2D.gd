@@ -6,8 +6,8 @@ var direction = 0
 
 #Valor en Porcentaje
 var cansancio = 100
-var cansancioDescenso = 0.01
-var cansancioLimite = 5
+export var cansancioDescenso = 0.01
+export var cansancioLimite = 40
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
