@@ -24,24 +24,23 @@ export var cansancioLimite = 40
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	if Input.is_action_pressed("ui_right"):
-			motion.x = SPEED * cansancio / 100
+			motion.x = 1 * SPEED * cansancio / 100
 			motion.y = 0
 			direction = 3
 			_processDescanso()
 	elif Input.is_action_pressed("ui_left"):
-		motion.x = -SPEED * cansancio / 100
+		motion.x = 1 * -SPEED * cansancio / 100
 		motion.y = 0
 		direction = 1
 		_processDescanso()
 	elif Input.is_action_pressed("ui_down"):
-		motion.y = SPEED * cansancio / 100
+		motion.y = 1 * SPEED * cansancio / 100
 		motion.x = 0
 		direction = 0
 		_processDescanso()
 	elif Input.is_action_pressed("ui_up"):
-		motion.y = -SPEED * cansancio / 100
+		motion.y = 1 * -SPEED * cansancio / 100
 		motion.x = 0
 		direction = 2
 		_processDescanso()
@@ -51,6 +50,8 @@ func _physics_process(delta):
 
 		
 	motion = move_and_slide(motion)
+	if Input.is_action_just_pressed("ui_accept"):
+		emit_signal("WHISTLE")
 
 func _processDescanso():
 	if cansancio > cansancioLimite:
