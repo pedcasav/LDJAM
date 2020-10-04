@@ -175,7 +175,7 @@ func custom_get_path(start, end):
 	return path_world
 "
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 9, 23 )
 
 [node name="lightingtest" type="Node2D"]
@@ -223,4 +223,4 @@ scale = Vector2( 0.165048, 0.302013 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
