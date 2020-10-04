@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/backgorund.png" type="Texture" id=1]
 [ext_resource path="res://nodos/PlayerLight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tile.png" type="Texture" id=3]
 [ext_resource path="res://assets/enemy.png" type="Texture" id=4]
+[ext_resource path="res://nodos/Interruptor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RealEnemy.gd" type="Script" id=6]
 
 [sub_resource type="OccluderPolygon2D" id=1]
@@ -214,6 +215,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="isInterruptor" type="Label" parent="."]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 664.0
+margin_bottom = 465.0
+rect_pivot_offset = Vector2( 43.714, 21 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "-1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RealEnemy" type="KinematicBody2D" parent="."]
 position = Vector2( 114, 87 )
 script = ExtResource( 6 )
@@ -224,3 +238,12 @@ texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
 shape = SubResource( 6 )
+
+[node name="Interruptor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 15.1532, 41.5311 )
+
+[node name="Interruptor2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 531.058, 209.796 )
+
+[node name="Interruptor3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 174.019, 403.677 )
