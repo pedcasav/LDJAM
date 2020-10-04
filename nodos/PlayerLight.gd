@@ -2,10 +2,12 @@ extends KinematicBody2D
 
 onready var IsInterruptor = $"../isInterruptor"
 export var onInterruptor = false
+onready var tiempo = $"../Timer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	tiempo.set_wait_time(5)
+
 func _process(delta):
 	if (Input.is_action_pressed("Escape")):
 		_backToMenu()
@@ -25,34 +27,41 @@ var cansancio = 100
 export var cansancioDescenso = 0.01
 export var cansancioLimite = 40
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	IsInterruptor.set_text(str(onInterruptor))
-	if Input.is_action_pressed("ui_right"):
+	
+	motion.x = 0
+	motion.y = 0
+	
+	if tiempo.time_left <= 0:
+		if Input.is_action_pressed("ui_right"):
 			motion.x = 1 * SPEED * cansancio / 100
 			motion.y = 0
 			direction = 3
 			_processDescanso()
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = 1 * -SPEED * cansancio / 100
-		motion.y = 0
-		direction = 1
-		_processDescanso()
-	elif Input.is_action_pressed("ui_down"):
-		motion.y = 1 * SPEED * cansancio / 100
-		motion.x = 0
-		direction = 0
-		_processDescanso()
-	elif Input.is_action_pressed("ui_up"):
-		motion.y = 1 * -SPEED * cansancio / 100
-		motion.x = 0
-		direction = 2
-		_processDescanso()
-	else:
-		motion.x = 0
-		motion.y = 0
-
-		
+		elif Input.is_action_pressed("ui_left"):
+			motion.x = 1 * -SPEED * cansancio / 100
+			motion.y = 0
+			direction = 1
+			_processDescanso()
+		elif Input.is_action_pressed("ui_down"):
+			motion.y = 1 * SPEED * cansancio / 100
+			motion.x = 0
+			direction = 0
+			_processDescanso()
+		elif Input.is_action_pressed("ui_up"):
+			motion.y = 1 * -SPEED * cansancio / 100
+			motion.x = 0
+			direction = 2
+			_processDescanso()
+	
+	#press to space when stay on interruptor
+	if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
+		tiempo.start()
+	
 	motion = move_and_slide(motion)
 	if Input.is_action_just_pressed("ui_accept"):
 		emit_signal("WHISTLE")
@@ -61,3 +70,16 @@ func _processDescanso():
 	if cansancio > cansancioLimite:
 		cansancio -= cansancioDescenso
 		#$"../CansancioLabel".set_text(str(cansancio))
+
+func _on_Timer_timeout():
+	var currentScene := get_tree().get_current_scene()
+	var tmpArr = currentScene.interruptoresArreglados
+	tmpArr[0] = true
+	
+	for v in range(tmpArr.size()):
+		if(tmpArr[v] == false):
+			tmpArr[v] = true
+			break
+	
+	currentScene.interruptoresArreglados = tmpArr
+	pass
