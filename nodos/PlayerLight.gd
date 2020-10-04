@@ -51,7 +51,8 @@ func _physics_process(delta):
 		if motion.x != 0 || motion.y != 0: _processDescanso()
 	
 	#press to space when stay on interruptor
-	if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
+	#if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
+	if(Input.is_action_just_pressed("mouse") && onInterruptor == true && tiempo.time_left <= 0):
 		tiempo.start()
 		progreso.value = 0
 		progreso.visible = true
