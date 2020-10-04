@@ -2,10 +2,12 @@ extends KinematicBody2D
 
 onready var IsInterruptor = $"../isInterruptor"
 export var onInterruptor = false
+onready var tiempo = $"../Timer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	tiempo.set_wait_time(5)
+
 func _process(delta):
 	if (Input.is_action_pressed("Escape")):
 		_backToMenu()
@@ -25,27 +27,49 @@ var cansancio = 100
 export var cansancioDescenso = 0.01
 export var cansancioLimite = 40
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	motion = Vector2()
 	
 	IsInterruptor.set_text(str(onInterruptor))
+	motion.x = 0
+	motion.y = 0
 	
 	# Movimiento del Jugador
-	if Input.is_key_pressed(KEY_W):
-		motion.y = -1
-	if Input.is_key_pressed(KEY_S):
-		motion.y = 1
-	if Input.is_key_pressed(KEY_A):
-		motion.x = -1
-	if Input.is_key_pressed(KEY_D):
-		motion.x = 1
+	if tiempo.time_left <= 0:
+		if Input.is_key_pressed(KEY_W):
+			motion.y = -1
+		if Input.is_key_pressed(KEY_S):
+			motion.y = 1
+		if Input.is_key_pressed(KEY_A):
+			motion.x = -1
+		if Input.is_key_pressed(KEY_D):
+			motion.x = 1
 
-	if motion.x != 0 || motion.y != 0: _processDescanso()
-		
+		if motion.x != 0 || motion.y != 0: _processDescanso()
+	
+	#press to space when stay on interruptor
+	if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
+		tiempo.start()
+	
 	motion = move_and_slide(motion.normalized() * SPEED)
 
 func _processDescanso():
 	if cansancio > cansancioLimite:
 		cansancio -= cansancioDescenso
 		#$"../CansancioLabel".set_text(str(cansancio))
+
+func _on_Timer_timeout():
+	var currentScene := get_tree().get_current_scene()
+	var tmpArr = currentScene.interruptoresArreglados
+	tmpArr[0] = true
+	
+	for v in range(tmpArr.size()):
+		if(tmpArr[v] == false):
+			tmpArr[v] = true
+			break
+	
+	currentScene.interruptoresArreglados = tmpArr
+	pass

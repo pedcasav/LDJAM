@@ -6,8 +6,7 @@
 [ext_resource path="res://assets/enemy.png" type="Texture" id=4]
 [ext_resource path="res://nodos/Interruptor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RealEnemy.gd" type="Script" id=6]
-[ext_resource path="res://sound/suspenso.ogg" type="AudioStream" id=8]
-[ext_resource path="res://sound/suspenso_alt.ogg" type="AudioStream" id=9]
+[ext_resource path="res://lightingtest.gd" type="Script" id=7]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -179,15 +178,13 @@ func custom_get_path(start, end):
 "
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 13.409, 28.92 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 9, 23 )
 
 [node name="lightingtest" type="Node2D"]
-
-[node name="backgorund" type="Sprite" parent="."]
-visible = false
-position = Vector2( 335.046, 271.248 )
-scale = Vector2( 1.33153, 1.36671 )
-texture = ExtResource( 1 )
+script = ExtResource( 7 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -238,8 +235,13 @@ script = ExtResource( 6 )
 scale = Vector2( 0.165048, 0.302013 )
 texture = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
+[node name="Area2D" type="Area2D" parent="RealEnemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy/Area2D"]
 shape = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
+shape = SubResource( 7 )
 
 [node name="Interruptor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 15.1532, 41.5311 )
@@ -250,11 +252,7 @@ position = Vector2( 531.058, 209.796 )
 [node name="Interruptor3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 174.019, 403.677 )
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-volume_db = -80.0
-autoplay = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
-autoplay = true
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="RealEnemy/Area2D" to="RealEnemy" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="PlayerLight" method="_on_Timer_timeout"]
