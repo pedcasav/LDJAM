@@ -258,3 +258,12 @@ autoplay = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 30.3065
+margin_top = 488.271
+margin_right = 117.306
+margin_bottom = 502.271
+__meta__ = {
+"_edit_use_anchors_": false
+}
