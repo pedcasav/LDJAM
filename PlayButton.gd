@@ -1,8 +1,7 @@
 extends TextureButton
 #dictionary
 var scenes = {
-	"PlayButton": preload("res://World.tscn"),
-	"LightingButton" : preload("res://lightingtest.tscn"),
+	"PlayButton": preload("res://lightingtest.tscn"),
 }
 
 func _ready():
