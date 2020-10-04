@@ -252,7 +252,27 @@ position = Vector2( 531.058, 209.796 )
 [node name="Interruptor3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 174.019, 403.677 )
 
+<<<<<<< HEAD
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 [connection signal="body_entered" from="RealEnemy/Area2D" to="RealEnemy" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="PlayerLight" method="_on_Timer_timeout"]
+=======
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -80.0
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 30.3065
+margin_top = 488.271
+margin_right = 117.306
+margin_bottom = 502.271
+__meta__ = {
+"_edit_use_anchors_": false
+}
+>>>>>>> dino
