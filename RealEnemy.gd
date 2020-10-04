@@ -48,7 +48,10 @@ func _physics_process(delta : float):
 
 	var distance : = Velocidad * delta
 	if distanciaActual < Distancia:
+		# Si el asesino encuentra al jugador
+		$"../AudioStreamPlayer2".volume_db = -(distanciaActual * 0.068) #*0.058
 		moveToPath(position,posicionPlayer,distance)
 	else:
+		if $"../AudioStreamPlayer2".volume_db > -80: $"../AudioStreamPlayer2".volume_db -= 0.1
 		moveToPath(position,currentInterruptor.position,distance)
 		pass
