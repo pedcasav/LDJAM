@@ -43,8 +43,6 @@ func moveToPath(posA, posB,distance):
 func _physics_process(delta : float):
 	var posicionPlayer = $"../PlayerLight".position
 	var distanciaActual = sqrt(pow(posicionPlayer.x - position.x,2) + pow(posicionPlayer.y - position.y, 2))
-	
-	$"../LabelDistancia".set_text(str(get_global_mouse_position()))
 
 	var distance : = Velocidad * delta
 	if distanciaActual < Distancia:
