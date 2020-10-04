@@ -27,33 +27,24 @@ export var cansancioLimite = 40
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	motion = Vector2()
 	IsInterruptor.set_text(str(onInterruptor))
 	if Input.is_action_pressed("ui_right"):
-			motion.x = 1 * SPEED * cansancio / 100
-			motion.y = 0
-			direction = 3
+			motion.x = 1
 			_processDescanso()
-	elif Input.is_action_pressed("ui_left"):
-		motion.x = 1 * -SPEED * cansancio / 100
-		motion.y = 0
-		direction = 1
+	if Input.is_action_pressed("ui_left"):
+		motion.x = -1
 		_processDescanso()
-	elif Input.is_action_pressed("ui_down"):
-		motion.y = 1 * SPEED * cansancio / 100
-		motion.x = 0
-		direction = 0
+	if Input.is_action_pressed("ui_down"):
+		motion.y = 1
 		_processDescanso()
-	elif Input.is_action_pressed("ui_up"):
-		motion.y = 1 * -SPEED * cansancio / 100
-		motion.x = 0
-		direction = 2
+	if Input.is_action_pressed("ui_up"):
+		motion.y = -1
 		_processDescanso()
-	else:
-		motion.x = 0
-		motion.y = 0
 
 		
-	motion = move_and_slide(motion)
+	motion = move_and_slide(motion.normalized() * SPEED)
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		emit_signal("WHISTLE")
 
