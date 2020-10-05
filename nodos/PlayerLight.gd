@@ -22,6 +22,10 @@ export var SPEED = 120
 var motion = Vector2()
 var direction = 0
 var asustado = false
+var objetos = {"papeles": false,
+"llave": false,
+"destornillador": false,
+"camara": false}
 
 #MOVIMIENTO DE PERSONAJE
 
@@ -90,6 +94,12 @@ func _physics_process(delta):
 	
 	# Barra de Cansancio
 	barraCansancio.play("barra" + str(int(cansancio/10)-2))
+	
+	# Barra de Objetos
+	$"../CanvasLayer/papeles".visible = objetos["papeles"]
+	$"../CanvasLayer/llave".visible = objetos["llave"]
+	$"../CanvasLayer/destornillador".visible = objetos["destornillador"]
+	$"../CanvasLayer/camara".visible = objetos["camara"]
 
 func isTriggerEnemy():
 	var mousePos = get_viewport().get_mouse_position()
