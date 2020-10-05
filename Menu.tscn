@@ -140,6 +140,7 @@ volume_db = -9.237
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+volume_db = 4.289
 autoplay = true
 [connection signal="button_up" from="CanvasLayer/Panel/PlayButton" to="CanvasLayer/Panel/PlayButton" method="_on_PlayButton_button_up"]
 [connection signal="button_up" from="CanvasLayer/Panel/ExitButton" to="CanvasLayer/Panel/ExitButton" method="_on_ExitButton_button_up"]
