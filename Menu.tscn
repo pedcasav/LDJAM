@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://PlayButton.gd" type="Script" id=1]
 [ext_resource path="res://ExitButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/empty_button.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/Theme/Menu.tres" type="Theme" id=4]
+[ext_resource path="res://assets/menu_back.png" type="Texture" id=5]
 
 [node name="Control" type="Control"]
 anchor_left = 0.269
@@ -31,11 +32,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Menu_Background" type="Sprite" parent="Panel"]
+position = Vector2( 156.978, 150.26 )
+scale = Vector2( 0.486583, 0.642709 )
+texture = ExtResource( 5 )
+
 [node name="PlayButton" type="TextureButton" parent="Panel"]
 anchor_left = 0.5
-anchor_top = 0.380137
+anchor_top = 0.407534
 anchor_right = 0.5
-anchor_bottom = 0.380137
+anchor_bottom = 0.407534
 margin_left = -79.5
 margin_top = -22.5
 margin_right = 79.5
