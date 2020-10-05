@@ -6,6 +6,7 @@ var scenes = {
 
 func _ready():
 	$Label.text = "Play"
+	$Label.uppercase = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://PlayButton.gd" type="Script" id=1]
 [ext_resource path="res://ExitButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/empty_button.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/Theme/Menu.tres" type="Theme" id=4]
 [ext_resource path="res://assets/menu_back.png" type="Texture" id=5]
+[ext_resource path="res://assets/menu_item.png" type="Texture" id=6]
 
 [node name="Control" type="Control"]
 anchor_left = 0.269
@@ -33,15 +34,26 @@ __meta__ = {
 }
 
 [node name="Menu_Background" type="Sprite" parent="Panel"]
-position = Vector2( 156.978, 150.26 )
-scale = Vector2( 0.486583, 0.642709 )
+position = Vector2( 155.679, 148.433 )
+scale = Vector2( 0.739727, 0.636999 )
 texture = ExtResource( 5 )
+
+[node name="Menu_item" type="Sprite" parent="Panel"]
+position = Vector2( 70.7906, 173.617 )
+scale = Vector2( 0.233686, 0.270071 )
+texture = ExtResource( 6 )
+
+[node name="Menu_item2" type="Sprite" parent="Panel"]
+position = Vector2( 244.791, 174.033 )
+scale = Vector2( 0.233686, 0.266924 )
+texture = ExtResource( 6 )
+flip_h = true
 
 [node name="PlayButton" type="TextureButton" parent="Panel"]
 anchor_left = 0.5
-anchor_top = 0.407534
+anchor_top = 0.47774
 anchor_right = 0.5
-anchor_bottom = 0.407534
+anchor_bottom = 0.47774
 margin_left = -79.5
 margin_top = -22.5
 margin_right = 79.5
@@ -49,6 +61,7 @@ margin_bottom = 22.5
 rect_pivot_offset = Vector2( 146.494, 122.685 )
 theme = ExtResource( 4 )
 texture_normal = ExtResource( 3 )
+stretch_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -59,19 +72,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -11.0
-margin_right = 20.0
-margin_bottom = 11.0
+margin_left = -23.0
+margin_top = -8.0
+margin_right = 17.0
+margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitButton" type="TextureButton" parent="Panel"]
 anchor_left = 0.5
-anchor_top = 0.441236
+anchor_top = 0.513154
 anchor_right = 0.5
-anchor_bottom = 0.441236
+anchor_bottom = 0.513154
 margin_left = -79.5
 margin_top = 36.5
 margin_right = 79.5
@@ -102,10 +115,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -11.0
-margin_right = 20.0
-margin_bottom = 11.0
+margin_left = -23.0
+margin_top = -8.0
+margin_right = 17.0
+margin_bottom = 14.0
 theme = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

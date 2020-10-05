@@ -8,6 +8,7 @@ onready var interruptores = get_tree().get_nodes_in_group("interruptores")
 var path : = PoolVector2Array()
 var currentInterruptor = null
 var rng = RandomNumberGenerator.new()
+var Direccion = 0
 
 func _ready():
 	SelectInrretupor()
@@ -30,7 +31,11 @@ func moveToPath(posA, posB,distance):
 	for i in range(path.size()):
 		var distance_to_next := start_point.distance_to(path[0])
 		if(distance <= distance_to_next and distance >= 0.0):
+			var viejaPos = position.x
 			position = start_point.linear_interpolate(path[0],distance / distance_to_next)
+			if viejaPos > position.x: 
+				Direccion = 0
+			else: Direccion = 1
 			#move_and_slide(Vector2(0,0))
 			break
 		elif distance < 0.0:
@@ -50,12 +55,16 @@ func _physics_process(delta : float):
 		distance = (Velocidad + 15) * delta
 		$"../AudioStreamPlayer2".volume_db = -(distanciaActual * 0.068) #*0.058
 		moveToPath(position,posicionPlayer,distance)
+		$"../PlayerLight".asustado = true	
 	else:
 		if $"../AudioStreamPlayer2".volume_db > -80: $"../AudioStreamPlayer2".volume_db -= 0.1
 		moveToPath(position,currentInterruptor.position,distance)
-		pass
-
+		$"../PlayerLight".asustado = false
+		
+	if Direccion > 0:
+		$AnimatedSprite.play("derecha_anim")
+	else: $AnimatedSprite.play("izquierda_anim")
 
 func _on_Area2D_body_entered(body):
 	if(body.name == 'PlayerLight'):
-		get_tree().reload_current_scene()
+		get_tree().reload_current_scene()	
