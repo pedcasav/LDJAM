@@ -14,29 +14,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(isJugador && Input.is_action_just_pressed("mouse")):
+	if(Input.is_action_just_pressed("mouse")):
 		if get_tree().get_current_scene().isTriggerBox(position,Vector2(48,48)):
-			$"../soundPickUp".play()
-			Global.objetos["papeles"] = true
-			guiapanel.visible = true
-			guiapanel.get_node("RichTextLabel").text = text
-			get_tree().paused = true
+			
+			if Global.objetos["camara"]:
+				crearMensaje("I got the camera!, how should I use it?")
+			elif !Global.objetos["papeles"] || !Global.objetos["destornillador"] || !Global.objetos["llave"]:
+				crearMensaje("I won't be able to get the camera without the help of a screwdriver")
+			else:
+				$"../soundPickUp".play()
+				Global.objetos["camara"] = true
+				crearMensaje("How should I use this camera?!")
+			
 	if(guiapanel.visible && Input.is_action_just_pressed("ui_accept")):
 		guiapanel.visible = false
 		guiapanel.get_node("RichTextLabel").text = ''
 		get_tree().paused = false
 	pass
 
-
-func _on_papel_body_entered(body):
-	if(body.name == 'PlayerLight'):
-		isJugador = true
-		set_process(true)
-	pass # Replace with function body.
-
-
-func _on_papel_body_exited(body):
-	if(body.name == 'PlayerLight'):
-		isJugador = false
-		set_process(false)
-	pass # Replace with function body.
+func crearMensaje(texto):
+	guiapanel.visible = true
+	guiapanel.get_node("RichTextLabel").text = texto
+	get_tree().paused = true
+	pass

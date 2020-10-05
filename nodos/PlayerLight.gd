@@ -18,17 +18,17 @@ func _process(delta):
 		_backToMenu()
 
 func _backToMenu():
+	Global.objetos["camara"] = false
+	Global.objetos["papeles"] = false
+	Global.objetos["destornillador"] = false
+	Global.objetos["camara"] = false
 	get_tree().change_scene("res://Menu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-export var SPEED = 120
+export var SPEED = 400 #120
 var motion = Vector2()
 var direction = 0
 var asustado = false
-var objetos = {"papeles": false,
-"llave": false,
-"destornillador": false,
-"camara": false}
 
 #MOVIMIENTO DE PERSONAJE
 
@@ -84,7 +84,15 @@ func _physics_process(delta):
 	#press to space when stay on interruptor
 	#if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
 	if(Input.is_action_just_pressed("mouse")):
-		if isTriggerEnemy(): print("test" + str(range(1,32)))
+		if isTriggerEnemy():
+			if Global.objetos["camara"]:
+				Global.objetos["camara"] = false
+				Global.objetos["papeles"] = false
+				Global.objetos["destornillador"] = false
+				Global.objetos["llave"] = false
+				# Ganar el Juego
+			else:
+				print("no lleva camara")
 		if onInterruptor && tiempo.time_left <= 0 && !InterruptorActual.isOn:
 			tiempo.start()
 			progreso.value = 0
@@ -99,21 +107,15 @@ func _physics_process(delta):
 	barraCansancio.play("barra" + str(int(cansancio/10)-2))
 	
 	# Barra de Objetos
-	$"../CanvasLayer/papeles".visible = objetos["papeles"]
-	$"../CanvasLayer/llave".visible = objetos["llave"]
-	$"../CanvasLayer/destornillador".visible = objetos["destornillador"]
-	$"../CanvasLayer/camara".visible = objetos["camara"]
+	$"../CanvasLayer/papeles".visible = Global.objetos["papeles"]
+	$"../CanvasLayer/llave".visible = Global.objetos["llave"]
+	$"../CanvasLayer/destornillador".visible = Global.objetos["destornillador"]
+	$"../CanvasLayer/camara".visible = Global.objetos["camara"]
 
 func isTriggerEnemy():
-	var mousePos = get_viewport().get_mouse_position()
-	var enemyPos = Vector2($"../RealEnemy".position.x-6,$"../RealEnemy".position.y-16)
-	var enemySize = Vector2(13,28)
-
-	if (mousePos.x >= enemyPos.x && mousePos.x <= enemyPos.x + enemySize.x):
-		if (mousePos.y >= enemyPos.y && mousePos.y <= enemyPos.y + enemySize.y):
-			return true
-	
-	return false
+	var enemyPos = Vector2($"../RealEnemy".position.x-15,$"../RealEnemy".position.y-10)
+	var enemySize = Vector2(64,64)
+	return get_tree().get_current_scene().isTriggerBox(enemyPos,enemySize)
 
 func _processDescanso():
 	if cansancio > cansancioLimite:

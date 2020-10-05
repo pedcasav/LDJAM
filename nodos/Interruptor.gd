@@ -10,6 +10,11 @@ var bodyNames = {
 	"enemy": 'RealEnemy'
 }
 
+func _process(delta):
+	if isOn: 
+		$"Sprite".texture = load("res://assets/interruptor_verde.png")
+		#set_process(false)
+
 func _on_Interruptor_body_entered(body):
 	if (body.name == bodyNames["player"]):
 		player.onInterruptor = true

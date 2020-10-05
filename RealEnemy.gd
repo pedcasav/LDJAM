@@ -56,7 +56,6 @@ func _physics_process(delta : float):
 		$"../AudioStreamPlayer2".volume_db = -(distanciaActual * 0.068) #*0.058
 		moveToPath(position,posicionPlayer,distance)
 		$"../PlayerLight".asustado = true
-		print(distanciaActual)
 		if distanciaActual < 135: 
 			if !$"../soundMonkeyDie".playing: $"../soundMonkeyDie".play()
 	else:

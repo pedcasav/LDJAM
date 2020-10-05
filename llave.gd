@@ -14,10 +14,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(isJugador && Input.is_action_just_pressed("mouse")):
+	if(Input.is_action_just_pressed("mouse")):
 		if get_tree().get_current_scene().isTriggerBox(position,Vector2(48,48)):
 			$"../soundPickUp".play()
-			Global.objetos["papeles"] = true
+			Global.objetos["llave"] = true
 			guiapanel.visible = true
 			guiapanel.get_node("RichTextLabel").text = text
 			get_tree().paused = true
@@ -26,17 +26,3 @@ func _process(delta):
 		guiapanel.get_node("RichTextLabel").text = ''
 		get_tree().paused = false
 	pass
-
-
-func _on_papel_body_entered(body):
-	if(body.name == 'PlayerLight'):
-		isJugador = true
-		set_process(true)
-	pass # Replace with function body.
-
-
-func _on_papel_body_exited(body):
-	if(body.name == 'PlayerLight'):
-		isJugador = false
-		set_process(false)
-	pass # Replace with function body.
