@@ -20,6 +20,7 @@ func _backToMenu():
 const SPEED = 120
 var motion = Vector2()
 var direction = 0
+var asustado = false
 
 #MOVIMIENTO DE PERSONAJE
 
@@ -28,10 +29,9 @@ var cansancio = 100
 export var cansancioDescenso = 0.01
 export var cansancioLimite = 40
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	var anim = "normal"
 	motion = Vector2()
 	IsInterruptor.set_text(str(onInterruptor))
 	motion.x = 0
@@ -45,10 +45,26 @@ func _physics_process(delta):
 			motion.y = 1
 		if Input.is_key_pressed(KEY_A):
 			motion.x = -1
+			direction = 0
 		if Input.is_key_pressed(KEY_D):
 			motion.x = 1
+			direction = 1
 
-		if motion.x != 0 || motion.y != 0: _processDescanso()
+		if asustado: 
+			anim = "asustado"
+		else: anim = "normal"
+
+		if motion.x != 0 || motion.y != 0: 
+			_processDescanso()
+			if direction > 0:
+				$AnimatedSprite.play("derecha_anim_" + anim)
+			else:
+				$AnimatedSprite.play("izquierda_anim_" + anim)
+		else:
+			if direction > 0:
+				$AnimatedSprite.play("derecha_" + anim)
+			else:
+				$AnimatedSprite.play("izquierda_" + anim)
 	
 	#press to space when stay on interruptor
 	#if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
