@@ -25,7 +25,7 @@ func _backToMenu():
 	get_tree().change_scene("res://Menu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-export var SPEED = 400 #120
+export var SPEED = 120
 var motion = Vector2()
 var direction = 0
 var asustado = false
@@ -91,7 +91,7 @@ func _physics_process(delta):
 				Global.objetos["papeles"] = false
 				Global.objetos["destornillador"] = false
 				Global.objetos["llave"] = false
-				
+				get_tree().change_scene("res://Win.tscn")
 			else:
 				print("no lleva camara")
 		if onInterruptor && tiempo.time_left <= 0 && !InterruptorActual.isOn:

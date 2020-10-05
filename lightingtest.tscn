@@ -176,16 +176,6 @@ func custom_get_path(start, end):
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "derecha_anim_normal",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "izquierda_anim_asustado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
 "name": "derecha_asustado",
@@ -206,37 +196,47 @@ animations = [ {
 "name": "derecha_normal",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"frames": [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "derecha_anim_asustado",
+"name": "izquierda_anim_asustado",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
 "name": "izquierda_asustado",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "derecha_anim_asustado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "derecha_anim_normal",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "izquierda",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "derecha",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "derecha_anim",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "izquierda_anim",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "izquierda",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "derecha_anim",
 "speed": 5.0
 } ]
 
@@ -254,16 +254,6 @@ animations = [ {
 "frames": [ ExtResource( 33 ) ],
 "loop": true,
 "name": "barra1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ) ],
-"loop": true,
-"name": "barra5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 40 ) ],
-"loop": true,
-"name": "barra8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 37 ) ],
@@ -284,6 +274,16 @@ animations = [ {
 "frames": [ ExtResource( 34 ) ],
 "loop": true,
 "name": "barra2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ) ],
+"loop": true,
+"name": "barra5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 40 ) ],
+"loop": true,
+"name": "barra8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ) ],
@@ -557,13 +557,13 @@ script = ExtResource( 46 )
 [connection signal="timeout" from="Timer" to="PlayerLight" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="papel" to="papel" method="_on_papel_body_entered"]
 [connection signal="body_exited" from="papel" to="papel" method="_on_papel_body_exited"]
-[connection signal="body_entered" from="llave" to="." method="_on_llave_body_entered"]
 [connection signal="body_entered" from="llave" to="llave" method="_on_papel_body_entered"]
+[connection signal="body_entered" from="llave" to="." method="_on_llave_body_entered"]
 [connection signal="body_exited" from="llave" to="llave" method="_on_papel_body_exited"]
-[connection signal="body_entered" from="destornillador" to="." method="_on_llave_body_entered"]
 [connection signal="body_entered" from="destornillador" to="destornillador" method="_on_papel_body_entered"]
+[connection signal="body_entered" from="destornillador" to="." method="_on_llave_body_entered"]
 [connection signal="body_exited" from="destornillador" to="destornillador" method="_on_papel_body_exited"]
-[connection signal="body_entered" from="camara" to="." method="_on_llave_body_entered"]
 [connection signal="body_entered" from="camara" to="camara" method="_on_papel_body_entered"]
+[connection signal="body_entered" from="camara" to="." method="_on_llave_body_entered"]
 [connection signal="body_exited" from="camara" to="camara" method="_on_papel_body_exited"]
 [connection signal="body_entered" from="PuertaDeSalida" to="." method="_on_PuertaDeSalida_body_entered"]
