@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var IsInterruptor = $"../isInterruptor"
 export var onInterruptor = false
 onready var tiempo = $"../Timer"
-onready var progreso = $"../BarraCansancio"
+onready var progreso = $"../CanvasLayer/BarraCansancio"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -77,5 +77,5 @@ func _on_Timer_timeout():
 			break
 	
 	currentScene.interruptoresArreglados = tmpArr
-	$"../BarraCansancio".visible = false
+	progreso.visible = false
 	pass
