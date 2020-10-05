@@ -11,12 +11,13 @@ var interruptoresArreglados = []
 func _ready():
 	var tmp_interruptor = get_tree().get_nodes_in_group("interruptores")
 	for i in tmp_interruptor:
-		interruptoresArreglados.push_back(false)
+		#interruptoresArreglados.push_back(false)
+		interruptoresArreglados.push_back(i)
 	pass
 
 func checkInterruptoresListos():
 	for v in interruptoresArreglados:
-		if(v == false):
+		if(v.isOn == false):
 			return false
 			break
 	return true
@@ -24,5 +25,16 @@ func checkInterruptoresListos():
 func _process(delta):
 	if(checkInterruptoresListos() == true):
 		print("abre la puerta")
+		get_node("PuertaDeSalida").visible= true
 		set_process(false)
 	pass
+
+
+
+
+
+func _on_PuertaDeSalida_body_entered(body):
+	if checkInterruptoresListos():
+		print("Nivel Reiniciado")
+		get_tree().reload_current_scene()
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Terreno.tres" type="TileSet" id=1]
 [ext_resource path="res://nodos/PlayerLight.tscn" type="PackedScene" id=2]
@@ -172,19 +172,9 @@ animations = [ {
 "name": "derecha_anim_asustado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ) ],
-"loop": true,
-"name": "izquierda_asustado",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 26 ) ],
 "loop": true,
 "name": "derecha_asustado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "izquierda_anim_normal",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
@@ -201,10 +191,30 @@ animations = [ {
 "loop": true,
 "name": "izquierda_anim_asustado",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "izquierda_anim_normal",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "izquierda_asustado",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "derecha",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "izquierda",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "izquierda_anim",
@@ -213,16 +223,6 @@ animations = [ {
 "frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "derecha_anim",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "izquierda",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "derecha",
 "speed": 5.0
 } ]
 
@@ -246,9 +246,9 @@ animations = [ {
 "name": "barra4",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 40 ) ],
+"frames": [ ExtResource( 34 ) ],
 "loop": true,
-"name": "barra8",
+"name": "barra2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 39 ) ],
@@ -261,9 +261,9 @@ animations = [ {
 "name": "barra7",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 34 ) ],
+"frames": [ ExtResource( 40 ) ],
 "loop": true,
-"name": "barra2",
+"name": "barra8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 33 ) ],
@@ -279,6 +279,9 @@ animations = [ {
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 0.843137, 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 39.231, 14.9408 )
 
 [node name="lightingtest" type="Node2D"]
 script = ExtResource( 7 )
@@ -430,8 +433,25 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PuertaDeSalida" type="Area2D" parent="."]
+visible = false
+position = Vector2( 149.691, 175.407 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="PuertaDeSalida"]
+position = Vector2( -1.98425, 4.76221 )
+scale = Vector2( 0.745707, 0.158357 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaDeSalida"]
+position = Vector2( -1.5874, 3.96851 )
+shape = SubResource( 9 )
 [connection signal="input_event" from="RealEnemy" to="." method="_on_RealEnemy_input_event"]
 [connection signal="body_entered" from="RealEnemy/Area2D" to="RealEnemy" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="PlayerLight" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="papel" to="papel" method="_on_papel_body_entered"]
 [connection signal="body_exited" from="papel" to="papel" method="_on_papel_body_exited"]
+[connection signal="body_entered" from="PuertaDeSalida" to="." method="_on_PuertaDeSalida_body_entered"]

@@ -1,7 +1,10 @@
 extends KinematicBody2D
 
 onready var IsInterruptor = $"../isInterruptor"
+
+
 export var onInterruptor = false
+var InterruptorActual = {}
 onready var tiempo = $"../Timer"
 onready var progreso = $"../CanvasLayer/BarraCansancio"
 onready var barraCansancio = $"../CanvasLayer/AnimatedSprite"
@@ -78,7 +81,7 @@ func _physics_process(delta):
 	#if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
 	if(Input.is_action_just_pressed("mouse")):
 		if isTriggerEnemy(): print("test" + str(range(1,32)))
-		if onInterruptor && tiempo.time_left <= 0:
+		if onInterruptor && tiempo.time_left <= 0 && !InterruptorActual.isOn:
 			tiempo.start()
 			progreso.value = 0
 			progreso.visible = true
@@ -110,12 +113,14 @@ func _processDescanso():
 func _on_Timer_timeout():
 	var currentScene := get_tree().get_current_scene()
 	var tmpArr = currentScene.interruptoresArreglados
-	tmpArr[0] = true
+	#tmpArr[0] = true
+	if !InterruptorActual.isOn:
+		InterruptorActual.isOn = true
 	
-	for v in range(tmpArr.size()):
-		if(tmpArr[v] == false):
-			tmpArr[v] = true
-			break
+#	for v in range(tmpArr.size()):
+#		if(tmpArr[v] == false):
+#			tmpArr[v] = true
+#			break
 	
 	currentScene.interruptoresArreglados = tmpArr
 	progreso.visible = false
