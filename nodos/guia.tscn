@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.54902, 0.54902, 0.54902, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
 
 [node name="guia" type="Control"]
@@ -15,21 +15,21 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 228.844
-margin_top = 158.919
-margin_right = 417.844
-margin_bottom = 347.919
-custom_styles/panel = SubResource( 4 )
+margin_left = 229.0
+margin_top = 159.0
+margin_right = 418.0
+margin_bottom = 359.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 243.65
-margin_top = 181.705
-margin_right = 402.65
-margin_bottom = 340.705
-custom_styles/normal = SubResource( 5 )
+margin_left = 244.0
+margin_top = 193.0
+margin_right = 403.0
+margin_bottom = 348.0
+custom_styles/normal = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 tab_size = 1
 __meta__ = {
@@ -37,11 +37,22 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 297.875
+margin_left = 302.547
 margin_top = 164.532
-margin_right = 339.875
+margin_right = 344.547
 margin_bottom = 178.532
 text = "GUIDE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 272.016
+margin_top = 179.0
+margin_right = 401.016
+margin_bottom = 193.0
+rect_scale = Vector2( 0.85, 0.85 )
+text = "Press [Space] to exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
