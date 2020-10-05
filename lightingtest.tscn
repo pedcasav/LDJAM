@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Terreno.tres" type="TileSet" id=1]
 [ext_resource path="res://nodos/PlayerLight.tscn" type="PackedScene" id=2]
@@ -160,27 +160,11 @@ func custom_get_path(start, end):
 	return path_world
 "
 
-
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "derecha_anim_normal",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ) ],
-"loop": true,
-"name": "izquierda_asustado",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "izquierda_anim_normal",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "izquierda_normal",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
@@ -188,9 +172,19 @@ animations = [ {
 "name": "derecha_normal",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ) ],
+"frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "derecha_asustado",
+"name": "izquierda_normal",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "izquierda_anim_asustado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "izquierda_anim_normal",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
@@ -198,17 +192,22 @@ animations = [ {
 "name": "derecha_anim_asustado",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 25 ) ],
 "loop": true,
-"name": "izquierda_anim_asustado",
+"name": "izquierda_asustado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "derecha_asustado",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "derecha_anim",
+"name": "derecha",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
@@ -216,9 +215,9 @@ animations = [ {
 "name": "izquierda_anim",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
-"name": "derecha",
+"name": "derecha_anim",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -227,24 +226,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13.409, 28.92 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 9, 23 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=6]
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 35 ) ],
 "loop": true,
 "name": "barra3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 40 ) ],
-"loop": true,
-"name": "barra8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 33 ) ],
@@ -252,9 +246,19 @@ animations = [ {
 "name": "barra1",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 39 ) ],
+"loop": true,
+"name": "barra6",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 34 ) ],
 "loop": true,
 "name": "barra2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 40 ) ],
+"loop": true,
+"name": "barra8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 36 ) ],
@@ -267,18 +271,13 @@ animations = [ {
 "name": "barra7",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ) ],
-"loop": true,
-"name": "barra6",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 38 ) ],
 "loop": true,
 "name": "barra4",
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 0.843137, 0, 1 )
 
 [node name="lightingtest" type="Node2D"]
@@ -309,7 +308,7 @@ position = Vector2( 267.994, 212.218 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PlayerLight"]
 scale = Vector2( 0.487805, 0.508197 )
-frames = SubResource( 6 )
+frames = SubResource( 2 )
 animation = "derecha_normal"
 
 [node name="LabelDistancia" type="Label" parent="."]
@@ -326,16 +325,16 @@ __meta__ = {
 }
 
 [node name="isInterruptor" type="Label" parent="."]
-
-margin_left = -157.5
-margin_top = -49.5
-margin_right = 486.5
-margin_bottom = 365.5
+margin_left = -161.396
+margin_top = -53.396
+margin_right = 482.604
+margin_bottom = 361.604
 rect_pivot_offset = Vector2( 43.714, 21 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "-1"
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -343,41 +342,43 @@ __meta__ = {
 color = Color( 0.243137, 0.243137, 0.243137, 1 )
 
 [node name="RealEnemy" type="KinematicBody2D" parent="."]
-position = Vector2( 146.746, 176.259 )
+position = Vector2( 33.7732, 163.578 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="RealEnemy"]
-position = Vector2( -0.813538, 16.8513 )
-
 visible = false
-
+position = Vector2( -0.813538, 16.8513 )
 scale = Vector2( 0.165048, 0.302013 )
 texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="RealEnemy"]
+position = Vector2( 0.463287, 25.4809 )
 scale = Vector2( 0.74097, 0.703151 )
-frames = SubResource( 7 )
+frames = SubResource( 3 )
 animation = "izquierda"
 
 [node name="Area2D" type="Area2D" parent="RealEnemy"]
 position = Vector2( -0.509216, -0.251114 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy/Area2D"]
-
-shape = SubResource( 8 )
+position = Vector2( 1.85315, 24.5543 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
-shape = SubResource( 9 )
-
+position = Vector2( 1.85315, 24.091 )
+shape = SubResource( 5 )
 
 [node name="Interruptor" parent="." instance=ExtResource( 5 )]
-position = Vector2( 15.1532, 177.104 )
+position = Vector2( 1146.95, 767.351 )
 
 [node name="Interruptor2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 531.058, 209.796 )
+position = Vector2( 890.329, 196.049 )
 
 [node name="Interruptor3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 174.019, 403.677 )
+position = Vector2( 333.8, 804.859 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -393,7 +394,7 @@ autoplay = true
 
 [node name="papel" type="Area2D" parent="."]
 pause_mode = 2
-position = Vector2( 357.542, 264.543 )
+position = Vector2( 1101.62, 761.873 )
 script = ExtResource( 12 )
 text = "Pepe test"
 
@@ -403,14 +404,15 @@ scale = Vector2( 0.33107, 0.33107 )
 texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="papel"]
-shape = SubResource( 10 )
+position = Vector2( 785.515, 425.013 )
+shape = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
 position = Vector2( 611.602, 425.85 )
 scale = Vector2( 0.444498, 0.392569 )
-frames = SubResource( 12 )
+frames = SubResource( 7 )
 animation = "barra8"
 
 [node name="guia" parent="CanvasLayer" instance=ExtResource( 10 )]
@@ -426,7 +428,7 @@ margin_left = 179.0
 margin_top = 55.0
 margin_right = 500.0
 margin_bottom = 79.0
-custom_styles/bg = SubResource( 11 )
+custom_styles/bg = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
