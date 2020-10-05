@@ -131,11 +131,11 @@ func custom_get_path(start, end):
 	return path_world
 "
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "izquierda",
+"name": "derecha",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
@@ -148,16 +148,16 @@ animations = [ {
 "name": "derecha_anim",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "derecha",
+"name": "izquierda",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 37.5687, 37.0262 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 38.6469, 39.9889 )
 
 [node name="MenuBackground" type="Node2D"]
@@ -205,7 +205,7 @@ texture = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="RealEnemy"]
 position = Vector2( 0.463287, 25.4809 )
 scale = Vector2( 0.74097, 0.703151 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "izquierda"
 
 [node name="Area2D" type="Area2D" parent="RealEnemy"]
@@ -213,11 +213,11 @@ position = Vector2( -0.509216, -0.251114 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy/Area2D"]
 position = Vector2( 1.85315, 24.5543 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RealEnemy"]
 position = Vector2( 1.05945, 25.6784 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Interruptor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1146.95, 767.351 )
