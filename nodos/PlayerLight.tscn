@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://nodos/PlayerLight.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprite.png" type="Texture" id=2]
+[ext_resource path="res://Sprite/Mono.png" type="Texture" id=2]
 [ext_resource path="res://assets/basic_circle.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -17,8 +17,12 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 5.44153, 21.766 )
 texture = ExtResource( 3 )
 texture_scale = 5.21
 energy = 0.5
 mode = 2
 shadow_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
