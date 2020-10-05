@@ -21,8 +21,14 @@ config/icon="res://icon.png"
 
 [display]
 
+<<<<<<< HEAD
 window/size/width=640
 window/size/height=480
+=======
+window/size/width=670
+window/size/height=543
+window/size/fullscreen=true
+>>>>>>> 9baf4d3c8417aa4a1e843fbcb5614ef15b820bd8
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false
@@ -34,6 +40,11 @@ window/stretch/aspect="keep"
 Escape={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mouse={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
