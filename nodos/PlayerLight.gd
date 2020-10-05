@@ -85,12 +85,13 @@ func _physics_process(delta):
 	#if(Input.is_action_just_pressed("ui_accept") && onInterruptor == true && tiempo.time_left <= 0):
 	if(Input.is_action_just_pressed("mouse")):
 		if isTriggerEnemy():
+			# Ganar el Juego
 			if Global.objetos["camara"]:
 				Global.objetos["camara"] = false
 				Global.objetos["papeles"] = false
 				Global.objetos["destornillador"] = false
 				Global.objetos["llave"] = false
-				# Ganar el Juego
+				
 			else:
 				print("no lleva camara")
 		if onInterruptor && tiempo.time_left <= 0 && !InterruptorActual.isOn:
