@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var Velocidad : = 50.0
+export var Velocidad : = 80.0
 export var Distancia = 170
 onready var nav_2d : Navigation2D = $"../Navigation2D"
 onready var interruptores = get_tree().get_nodes_in_group("interruptores")
