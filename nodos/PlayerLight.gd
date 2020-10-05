@@ -126,6 +126,7 @@ func _on_Timer_timeout():
 	#tmpArr[0] = true
 	if !InterruptorActual.isOn:
 		InterruptorActual.isOn = true
+		$"../soundBeep".play()
 	
 #	for v in range(tmpArr.size()):
 #		if(tmpArr[v] == false):

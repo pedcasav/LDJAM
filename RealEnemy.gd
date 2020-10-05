@@ -55,7 +55,10 @@ func _physics_process(delta : float):
 		distance = (Velocidad + 15) * delta
 		$"../AudioStreamPlayer2".volume_db = -(distanciaActual * 0.068) #*0.058
 		moveToPath(position,posicionPlayer,distance)
-		$"../PlayerLight".asustado = true	
+		$"../PlayerLight".asustado = true
+		print(distanciaActual)
+		if distanciaActual < 135: 
+			if !$"../soundMonkeyDie".playing: $"../soundMonkeyDie".play()
 	else:
 		if $"../AudioStreamPlayer2".volume_db > -80: $"../AudioStreamPlayer2".volume_db -= 0.1
 		moveToPath(position,currentInterruptor.position,distance)
@@ -67,4 +70,4 @@ func _physics_process(delta : float):
 
 func _on_Area2D_body_entered(body):
 	if(body.name == 'PlayerLight'):
-		get_tree().reload_current_scene()	
+		get_tree().reload_current_scene()
