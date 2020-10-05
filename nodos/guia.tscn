@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.54902, 0.54902, 0.54902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.901961, 0.901961, 0.901961, 1 )
+
+[node name="guia" type="Control"]
+light_mask = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 228.844
+margin_top = 158.919
+margin_right = 417.844
+margin_bottom = 347.919
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 243.65
+margin_top = 181.705
+margin_right = 402.65
+margin_bottom = 340.705
+custom_styles/normal = SubResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+tab_size = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 297.875
+margin_top = 164.532
+margin_right = 339.875
+margin_bottom = 178.532
+text = "GUIDE"
+__meta__ = {
+"_edit_use_anchors_": false
+}

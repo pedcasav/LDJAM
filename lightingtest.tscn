@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/backgorund.png" type="Texture" id=1]
 [ext_resource path="res://nodos/PlayerLight.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://lightingtest.gd" type="Script" id=7]
 [ext_resource path="res://sound/suspenso.ogg" type="AudioStream" id=8]
 [ext_resource path="res://sound/suspenso_alt.ogg" type="AudioStream" id=9]
+[ext_resource path="res://nodos/guia.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/papel.png" type="Texture" id=11]
+[ext_resource path="res://papel.gd" type="Script" id=12]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -185,6 +188,8 @@ extents = Vector2( 13.409, 28.92 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 9, 23 )
 
+[sub_resource type="RectangleShape2D" id=9]
+
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 1, 0.843137, 0, 1 )
 
@@ -202,9 +207,6 @@ script = SubResource( 5 )
 
 [node name="PlayerLight" parent="." instance=ExtResource( 2 )]
 position = Vector2( 267.994, 212.218 )
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.243137, 0.243137, 0.243137, 1 )
 
 [node name="LabelDistancia" type="Label" parent="."]
 margin_left = 20.0
@@ -231,6 +233,9 @@ text = "-1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
 
 [node name="RealEnemy" type="KinematicBody2D" parent="."]
 position = Vector2( 114, 87 )
@@ -269,7 +274,29 @@ stream = ExtResource( 9 )
 volume_db = -80.0
 autoplay = true
 
-[node name="BarraCansancio" type="ProgressBar" parent="."]
+[node name="papel" type="Area2D" parent="."]
+pause_mode = 2
+position = Vector2( 357.542, 264.543 )
+script = ExtResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="papel"]
+position = Vector2( 0.387085, 0.555916 )
+scale = Vector2( 0.33107, 0.33107 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="papel"]
+shape = SubResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="guia" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
+margin_left = -1.12247
+margin_top = -1.12248
+margin_right = -1.12244
+margin_bottom = -1.1225
+
+[node name="BarraCansancio" type="ProgressBar" parent="CanvasLayer"]
 visible = false
 margin_left = 179.0
 margin_top = 55.0
@@ -282,3 +309,4 @@ __meta__ = {
 }
 [connection signal="body_entered" from="RealEnemy/Area2D" to="RealEnemy" method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="PlayerLight" method="_on_Timer_timeout"]
+[connection signal="body_entered" from="papel" to="papel" method="_on_papel_body_entered"]
