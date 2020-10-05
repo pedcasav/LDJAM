@@ -3,6 +3,8 @@ extends Area2D
 onready var player : KinematicBody2D = $"../PlayerLight"
 onready var enemy : KinematicBody2D = $"../RealEnemy"
 
+var isOn = false 
+
 var bodyNames = {
 	"player":'PlayerLight',
 	"enemy": 'RealEnemy'
