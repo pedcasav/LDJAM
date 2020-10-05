@@ -1,13 +1,11 @@
-extends Button
+extends TextureButton
 #dictionary
 var scenes = {
-	"PlayButton": preload("res://World.tscn"),
-	"LightingButton" : preload("res://lightingtest.tscn"),
+	"PlayButton": preload("res://lightingtest.tscn")
 }
-var game = preload("res://World.tscn")
 
 func _ready():
-	pass
+	$Label.text = "Play"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
