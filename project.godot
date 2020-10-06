@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LDJAM"
+config/name="MonoLab"
 run/main_scene="res://Menu.tscn"
 boot_splash/image="res://assets/BWimage.png"
 boot_splash/use_filter=false

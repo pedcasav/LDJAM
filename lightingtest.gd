@@ -34,6 +34,7 @@ func _on_PuertaDeSalida_body_entered(body):
 	if checkInterruptoresListos():
 		print("Nivel Reiniciado")
 		jugador.position = Vector2(1165,192)
+		jugador.cansancio = 100
 		var tmp_interruptor = get_tree().get_nodes_in_group("interruptores")
 		for i in tmp_interruptor:
 			#interruptoresArreglados.push_back(false)

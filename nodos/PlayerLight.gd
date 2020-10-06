@@ -25,7 +25,7 @@ func _backToMenu():
 	get_tree().change_scene("res://Menu.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-export var SPEED = 130
+export var SPEED = 140
 var motion = Vector2()
 var direction = 0
 var asustado = false
