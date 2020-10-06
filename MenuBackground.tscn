@@ -133,6 +133,11 @@ func custom_get_path(start, end):
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "derecha",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "derecha_anim",
@@ -141,11 +146,6 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "izquierda",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "derecha",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
@@ -220,10 +220,10 @@ position = Vector2( 1.05945, 25.6784 )
 shape = SubResource( 4 )
 
 [node name="Interruptor" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1146.95, 767.351 )
+position = Vector2( 1137.25, 687.773 )
 
 [node name="Interruptor2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 890.329, 196.049 )
+position = Vector2( 881.158, 111.958 )
 
 [node name="Interruptor3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 333.8, 804.859 )
